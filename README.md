@@ -9,12 +9,12 @@ University of Zaragoza · IEDIS
 
 This paper examines within-day work interruptions due to childcare as a candidate
 micro-level mechanism behind the child penalty. Using time-use diaries from the
-American Time Use Survey (ATUS, 2007–2023), we apply survival analysis combined
+American Time Use Survey (ATUS, 2003–2023), we apply survival analysis combined
 with Random Survival Forests, Gradient Boosting, SHAP values, and Accumulated
 Local Effects plots to model the time until a working parent’s first interruption. Parental
 gender is the dominant predictor across all methods: fathers face an instantaneous
-interruption hazard about 61 per cent below mothers’ (HR=0.388; 95% CI: 0.334–
-0.451), a gap robust to competing-risks decomposition, alternative censoring thresholds,
+interruption hazard about 61 per cent below mothers’ (HR=0.389; 95% CI: 0.346–
+0.438), a gap robust to competing-risks decomposition, alternative censoring thresholds,
 and a stratified specification. Higher education and income are associated with greater,
 not lower, interruption risk. A cross-national extension to eight countries confirms the
 universality of the gender gap, with male hazard ratios below one everywhere (0.388
@@ -33,7 +33,6 @@ Childcare_ML/
 │   ├── 01_ext_muestra.R        # Extract US and multi-country samples from MTUS
 │   ├── 02_ext_filtrado.R       # Filter and build analysis datasets
 │   ├── run_analisis_v2.R       # Main analysis: Cox, RSF, SHAP, ALE, GBM, multi-country
-│   └── gen_fig1.R              # Generate Figure 1 (activity states by gender)
 ├── output/
 │   ├── figures/                # Generated figures (not tracked; reproduce via code)
 │   └── logs/                   # Analysis logs (not tracked)
@@ -61,7 +60,7 @@ Figures are saved to `output/figures/`; the analysis log to `output/logs/output_
 
 ## Citation
 
-> Felipe-Calvo, D., Giménez-Nadal, J. I., & Molina, J. A. (2025). *Work Interruptions and Childcare: Exploring the Child Penalty in the Labour Market*.
+> Felipe-Calvo, D., Giménez-Nadal, J. I., & Molina, J. A. (2025). *Work Interruptions and Penalty: The role of parental gender*.
 
 ## Contact
 
