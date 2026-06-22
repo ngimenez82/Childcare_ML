@@ -1,0 +1,1727 @@
+
+
+========== ANÁLISIS ESTADOS UNIDOS 2003-2023 ==========
+
+--- Categorizando actividades [ US 2003-2023 ] ---
+--- Construyendo matriz de secuencias ---
+--- Detectando interrupciones ---
+Distribución ANTES de recalificar interrupciones > 120 min:
+
+          Censored Mixed Interruption  Pure Interruption 
+             94.98               1.51               3.51 
+Distribución DESPUÉS de recalificar:
+
+          Censored Mixed Interruption  Pure Interruption 
+             95.95               0.75               3.30 
+Dataset final [ US 2003-2023 ]: n = 36339 | eventos = 1544 
+
+>>> COMPOSICIÓN DE EVENTOS PARA TABLA 2 [ US 2003-2023 ] (muestra final) <<<
+  Pure interruptions  :  3.46%
+  Mixed interruptions :  0.78%
+  Any interruption    :  4.25%  (= pure + mixed)
+  Censored            : 95.75%
+  CHECK suma          : 100.00%  | n = 36339
+  [fig] fig_activity_states.pdf 
+
+--- ESTADÍSTICOS DESCRIPTIVOS ---
+
+====================================================================
+         Media Mediana  SD  Min Max Q1.25% Q3.75% Asimetria Curtosis
+--------------------------------------------------------------------
+  age    39.73   40    9.52 15  80    33     46     0.15      0.23  
+ nChild  1.85     2    0.92  1  12    1      2      1.39      3.68  
+hhldSize 3.95     4    1.16  2  15    3      5      1.07      3.21  
+ageChild 7.20     7    5.08  0  17    3      11     0.28     -1.10  
+--------------------------------------------------------------------
+
+Tabla de frecuencias: male
+=======================
+  Frecuencia Porcentaje
+-----------------------
+0   18,545     51.03   
+1   17,794     48.97   
+-----------------------
+
+Tabla de frecuencias: income
+=================================
+            Frecuencia Porcentaje
+---------------------------------
+highest 25%   15,943     43.87   
+lowest 25%    4,083      11.24   
+middle 50%    16,313     44.89   
+---------------------------------
+
+Tabla de frecuencias: midWeek
+=======================
+  Frecuencia Porcentaje
+-----------------------
+0   12,628     34.75   
+1   23,711     65.25   
+-----------------------
+
+Tabla de frecuencias: urban
+=======================
+  Frecuencia Porcentaje
+-----------------------
+0   5,940      16.35   
+1   30,399     83.65   
+-----------------------
+
+Tabla de frecuencias: cohab
+=======================
+  Frecuencia Porcentaje
+-----------------------
+0   8,153      22.44   
+1   28,186     77.56   
+-----------------------
+
+Tabla de frecuencias: educaGroup
+===================================================
+                              Frecuencia Porcentaje
+---------------------------------------------------
+Secondary education or lower    3,180       8.75   
+Completed secondary education   7,962      21.91   
+      Higher education          25,197     69.34   
+---------------------------------------------------
+
+Tabla de frecuencias: citizen
+=======================
+  Frecuencia Porcentaje
+-----------------------
+0   3,878      10.67   
+1   32,461     89.33   
+-----------------------
+
+Tabla de frecuencias: familyStatus
+===========================================================
+                                      Frecuencia Porcentaje
+-----------------------------------------------------------
+ In Couple (Spouse not in paid work)    6,374      17.54   
+In Couple (Spouse employed full-time)   17,558     48.32   
+In Couple (Spouse employed part-time)   4,254      11.71   
+  In Couple (Spouse employment N/A)     1,968       5.42   
+            Single Parent               6,185      17.02   
+-----------------------------------------------------------
+
+--- CURVAS KAPLAN-MEIER ---
+KM: Gender 
+  [fig] fig_km_us_male.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+           N Observed Expected (O-E)^2/E (O-E)^2/V
+male=0 18545     1032      667       200       357
+male=1 17794      512      877       152       357
+
+ Chisq= 357  on 1 degrees of freedom, p= <2e-16 
+KM: Education 
+  [fig] fig_km_us_educagroup.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+                                             N Observed Expected (O-E)^2/E
+educaGroup=Secondary education or lower   3180       55      130      43.5
+educaGroup=Completed secondary education  7962      276      360      19.8
+educaGroup=Higher education              25197     1213     1053      24.2
+                                         (O-E)^2/V
+educaGroup=Secondary education or lower       47.6
+educaGroup=Completed secondary education      25.9
+educaGroup=Higher education                   76.4
+
+ Chisq= 87.7  on 2 degrees of freedom, p= <2e-16 
+KM: Household size 
+  [fig] fig_km_us_hhldsizegroup.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+                             N Observed Expected (O-E)^2/E (O-E)^2/V
+hhldSizeGroup=2 members   2575      147      108   14.3890   15.5009
+hhldSizeGroup=3 members  10530      475      445    1.9705    2.7743
+hhldSizeGroup=4 members  14063      596      594    0.0059    0.0096
+hhldSizeGroup=5+ members  9171      326      397   12.6496   17.0614
+
+ Chisq= 29.1  on 3 degrees of freedom, p= 2e-06 
+KM: Age of child 
+  [fig] fig_km_us_agechildgroup.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+                              N Observed Expected (O-E)^2/E (O-E)^2/V
+ageChildGroup=0-4 years   13486      679      575     18.62     29.73
+ageChildGroup=5-12 years  15806      699      665      1.74      3.06
+ageChildGroup=13-17 years  7047      166      304     62.32     77.70
+
+ Chisq= 82.8  on 2 degrees of freedom, p= <2e-16 
+KM: Income 
+  [fig] fig_km_us_income.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+                       N Observed Expected (O-E)^2/E (O-E)^2/V
+income=highest 25% 15943      727      664    6.0253   10.5930
+income=lowest 25%   4083      160      162    0.0145    0.0163
+income=middle 50%  16313      657      719    5.2981    9.9307
+
+ Chisq= 11.4  on 2 degrees of freedom, p= 0.003 
+KM: Family status 
+  [fig] fig_km_us_familystatus.pdf 
+Log-rank test:
+Call:
+survdiff(formula = fmla, data = dfA)
+
+                                                       N Observed Expected
+familyStatus=In Couple (Spouse not in paid work)    6374      153    318.7
+familyStatus=In Couple (Spouse employed full-time) 17558      815    695.6
+familyStatus=In Couple (Spouse employed part-time)  4254      153    195.5
+familyStatus=In Couple (Spouse employment N/A)      1968       22     78.7
+familyStatus=Single Parent                          6185      401    255.4
+                                                   (O-E)^2/E (O-E)^2/V
+familyStatus=In Couple (Spouse not in paid work)       86.17     109.2
+familyStatus=In Couple (Spouse employed full-time)     20.50      37.4
+familyStatus=In Couple (Spouse employed part-time)      9.24      10.6
+familyStatus=In Couple (Spouse employment N/A)         40.89      43.2
+familyStatus=Single Parent                             82.94      99.7
+
+ Chisq= 241  on 4 degrees of freedom, p= <2e-16 
+
+
+--- MODELO COX (pesos + clustering por hogar) ---
+
+--- Resultados Cox con pesos y errores clusterizados ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + familyStatus + 
+    educaGroup, data = dfA, weights = ocombwt, x = TRUE, cluster = hldid)
+
+  n= 36339, number of events= 1544 
+
+                                                        coef  exp(coef)
+male1                                             -9.434e-01  3.893e-01
+age                                                4.192e-03  1.004e+00
+midWeek1                                           1.184e-01  1.126e+00
+hhldSize                                          -2.466e-01  7.815e-01
+nChild                                             3.816e-01  1.465e+00
+ageChild                                          -5.158e-02  9.497e-01
+urban1                                             4.262e-02  1.044e+00
+incomelowest 25%                                  -3.507e-01  7.042e-01
+incomemiddle 50%                                  -1.485e-01  8.620e-01
+familyStatusIn Couple (Spouse employed full-time)  5.655e-01  1.760e+00
+familyStatusIn Couple (Spouse employed part-time)  4.672e-01  1.596e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.708e-01  5.650e-01
+familyStatusSingle Parent                          7.285e-01  2.072e+00
+educaGroupCompleted secondary education            3.847e-01  1.469e+00
+educaGroupHigher education                         6.741e-01  1.962e+00
+                                                    se(coef)  robust se       z
+male1                                              2.206e-05  5.997e-02 -15.732
+age                                                1.381e-06  4.759e-03   0.881
+midWeek1                                           3.367e-05  7.889e-02   1.500
+hhldSize                                           1.487e-05  7.086e-02  -3.480
+nChild                                             1.764e-05  8.015e-02   4.762
+ageChild                                           2.380e-06  8.979e-03  -5.744
+urban1                                             2.713e-05  7.312e-02   0.583
+incomelowest 25%                                   3.994e-05  1.925e-01  -1.822
+incomemiddle 50%                                   2.176e-05  7.812e-02  -1.901
+familyStatusIn Couple (Spouse employed full-time)  3.291e-05  9.314e-02   6.071
+familyStatusIn Couple (Spouse employed part-time)  4.096e-05  1.186e-01   3.941
+familyStatusIn Couple (Spouse employment N/A)      7.592e-05  2.748e-01  -2.077
+familyStatusSingle Parent                          3.971e-05  1.525e-01   4.777
+educaGroupCompleted secondary education            4.817e-05  1.515e-01   2.538
+educaGroupHigher education                         4.670e-05  1.392e-01   4.843
+                                                  Pr(>|z|)    
+male1                                              < 2e-16 ***
+age                                               0.378456    
+midWeek1                                          0.133529    
+hhldSize                                          0.000502 ***
+nChild                                            1.92e-06 ***
+ageChild                                          9.24e-09 ***
+urban1                                            0.560011    
+incomelowest 25%                                  0.068475 .  
+incomemiddle 50%                                  0.057354 .  
+familyStatusIn Couple (Spouse employed full-time) 1.27e-09 ***
+familyStatusIn Couple (Spouse employed part-time) 8.12e-05 ***
+familyStatusIn Couple (Spouse employment N/A)     0.037765 *  
+familyStatusSingle Parent                         1.78e-06 ***
+educaGroupCompleted secondary education           0.011134 *  
+educaGroupHigher education                        1.28e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3893     2.5688
+age                                                  1.0042     0.9958
+midWeek1                                             1.1257     0.8884
+hhldSize                                             0.7815     1.2796
+nChild                                               1.4647     0.6827
+ageChild                                             0.9497     1.0529
+urban1                                               1.0435     0.9583
+incomelowest 25%                                     0.7042     1.4201
+incomemiddle 50%                                     0.8620     1.1601
+familyStatusIn Couple (Spouse employed full-time)    1.7602     0.5681
+familyStatusIn Couple (Spouse employed part-time)    1.5956     0.6267
+familyStatusIn Couple (Spouse employment N/A)        0.5650     1.7698
+familyStatusSingle Parent                            2.0720     0.4826
+educaGroupCompleted secondary education              1.4691     0.6807
+educaGroupHigher education                           1.9623     0.5096
+                                                  lower .95 upper .95
+male1                                                0.3461    0.4378
+age                                                  0.9949    1.0136
+midWeek1                                             0.9644    1.3139
+hhldSize                                             0.6801    0.8979
+nChild                                               1.2518    1.7138
+ageChild                                             0.9332    0.9666
+urban1                                               0.9042    1.2043
+incomelowest 25%                                     0.4828    1.0269
+incomemiddle 50%                                     0.7396    1.0046
+familyStatusIn Couple (Spouse employed full-time)    1.4665    2.1128
+familyStatusIn Couple (Spouse employed part-time)    1.2647    2.0130
+familyStatusIn Couple (Spouse employment N/A)        0.3298    0.9682
+familyStatusSingle Parent                            1.5367    2.7939
+educaGroupCompleted secondary education              1.0916    1.9772
+educaGroupHigher education                           1.4938    2.5777
+
+Concordance= 0.713  (se = 0.008 )
+Likelihood ratio test= 6.635e+09  on 15 df,   p=<2e-16
+Wald test            = 642.2  on 15 df,   p=<2e-16
+Score (logrank) test = 6.283e+09  on 15 df,   p=<2e-16,   Robust = 46.54  p=4e-05
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+
+--- COX ESTRATIFICADO por midWeek (corrección PH) ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + hhldSize + 
+    nChild + ageChild + urban + income + familyStatus + educaGroup + 
+    strata(midWeek), data = dfA, weights = ocombwt, x = TRUE, 
+    cluster = hldid)
+
+  n= 36339, number of events= 1544 
+
+                                                        coef  exp(coef)
+male1                                             -9.466e-01  3.881e-01
+age                                                4.034e-03  1.004e+00
+hhldSize                                          -2.455e-01  7.823e-01
+nChild                                             3.804e-01  1.463e+00
+ageChild                                          -5.174e-02  9.496e-01
+urban1                                             4.181e-02  1.043e+00
+incomelowest 25%                                  -3.405e-01  7.114e-01
+incomemiddle 50%                                  -1.447e-01  8.653e-01
+familyStatusIn Couple (Spouse employed full-time)  5.628e-01  1.756e+00
+familyStatusIn Couple (Spouse employed part-time)  4.640e-01  1.590e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.697e-01  5.657e-01
+familyStatusSingle Parent                          7.295e-01  2.074e+00
+educaGroupCompleted secondary education            3.831e-01  1.467e+00
+educaGroupHigher education                         6.710e-01  1.956e+00
+                                                    se(coef)  robust se       z
+male1                                              2.208e-05  6.008e-02 -15.756
+age                                                1.382e-06  4.740e-03   0.851
+hhldSize                                           1.488e-05  7.092e-02  -3.462
+nChild                                             1.763e-05  8.036e-02   4.733
+ageChild                                           2.381e-06  8.973e-03  -5.767
+urban1                                             2.713e-05  7.309e-02   0.572
+incomelowest 25%                                   3.994e-05  1.939e-01  -1.756
+incomemiddle 50%                                   2.177e-05  7.893e-02  -1.834
+familyStatusIn Couple (Spouse employed full-time)  3.291e-05  9.321e-02   6.038
+familyStatusIn Couple (Spouse employed part-time)  4.096e-05  1.186e-01   3.913
+familyStatusIn Couple (Spouse employment N/A)      7.594e-05  2.741e-01  -2.079
+familyStatusSingle Parent                          3.973e-05  1.517e-01   4.810
+educaGroupCompleted secondary education            4.817e-05  1.517e-01   2.526
+educaGroupHigher education                         4.671e-05  1.397e-01   4.803
+                                                  Pr(>|z|)    
+male1                                              < 2e-16 ***
+age                                               0.394695    
+hhldSize                                          0.000536 ***
+nChild                                            2.21e-06 ***
+ageChild                                          8.09e-09 ***
+urban1                                            0.567258    
+incomelowest 25%                                  0.079057 .  
+incomemiddle 50%                                  0.066687 .  
+familyStatusIn Couple (Spouse employed full-time) 1.56e-09 ***
+familyStatusIn Couple (Spouse employed part-time) 9.11e-05 ***
+familyStatusIn Couple (Spouse employment N/A)     0.037655 *  
+familyStatusSingle Parent                         1.51e-06 ***
+educaGroupCompleted secondary education           0.011534 *  
+educaGroupHigher education                        1.56e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3881     2.5769
+age                                                  1.0040     0.9960
+hhldSize                                             0.7823     1.2783
+nChild                                               1.4628     0.6836
+ageChild                                             0.9496     1.0531
+urban1                                               1.0427     0.9590
+incomelowest 25%                                     0.7114     1.4056
+incomemiddle 50%                                     0.8653     1.1557
+familyStatusIn Couple (Spouse employed full-time)    1.7556     0.5696
+familyStatusIn Couple (Spouse employed part-time)    1.5903     0.6288
+familyStatusIn Couple (Spouse employment N/A)        0.5657     1.7677
+familyStatusSingle Parent                            2.0739     0.4822
+educaGroupCompleted secondary education              1.4669     0.6817
+educaGroupHigher education                           1.9561     0.5112
+                                                  lower .95 upper .95
+male1                                                0.3450    0.4366
+age                                                  0.9948    1.0134
+hhldSize                                             0.6808    0.8989
+nChild                                               1.2496    1.7123
+ageChild                                             0.9330    0.9664
+urban1                                               0.9035    1.2033
+incomelowest 25%                                     0.4865    1.0403
+incomemiddle 50%                                     0.7412    1.0100
+familyStatusIn Couple (Spouse employed full-time)    1.4625    2.1076
+familyStatusIn Couple (Spouse employed part-time)    1.2606    2.0064
+familyStatusIn Couple (Spouse employment N/A)        0.3306    0.9680
+familyStatusSingle Parent                            1.5407    2.7918
+educaGroupCompleted secondary education              1.0897    1.9746
+educaGroupHigher education                           1.4876    2.5723
+
+Concordance= 0.72  (se = 0.008 )
+Likelihood ratio test= 6.6e+09  on 14 df,   p=<2e-16
+Wald test            = 641.6  on 14 df,   p=<2e-16
+Score (logrank) test = 6.263e+09  on 14 df,   p=<2e-16,   Robust = 44.29  p=5e-05
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+--- Test PH (modelo estratificado) ---
+                chisq df      p
+male         2.12e+06  1 <2e-16
+age          4.46e+07  1 <2e-16
+hhldSize     1.62e+07  1 <2e-16
+nChild       4.28e+03  1 <2e-16
+ageChild     9.78e+06  1 <2e-16
+urban        4.12e+06  1 <2e-16
+income       2.89e+07  2 <2e-16
+familyStatus 3.80e+07  4 <2e-16
+educaGroup   2.10e+07  2 <2e-16
+GLOBAL       1.98e+08 14 <2e-16
+  [fig] fig_schoenfeld.pdf 
+
+
+--- RIESGOS COMPETITIVOS: Cox causa-especifico (pure vs mixed) ---
+Eventos: pure = 1259 | mixed = 285
+
+--- Cox causa-especifico: PURA ---
+Call:
+coxph(formula = Surv(tiempo, estatus_pure) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + familyStatus + 
+    educaGroup, data = dfA, weights = ocombwt, x = TRUE, cluster = hldid)
+
+  n= 36339, number of events= 1259 
+
+                                                        coef  exp(coef)
+male1                                             -9.602e-01  3.828e-01
+age                                                5.806e-03  1.006e+00
+midWeek1                                           1.610e-01  1.175e+00
+hhldSize                                          -2.649e-01  7.673e-01
+nChild                                             3.961e-01  1.486e+00
+ageChild                                          -4.581e-02  9.552e-01
+urban1                                            -7.132e-03  9.929e-01
+incomelowest 25%                                  -3.804e-01  6.836e-01
+incomemiddle 50%                                  -1.642e-01  8.486e-01
+familyStatusIn Couple (Spouse employed full-time)  5.877e-01  1.800e+00
+familyStatusIn Couple (Spouse employed part-time)  4.789e-01  1.614e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.760e-01  5.621e-01
+familyStatusSingle Parent                          7.384e-01  2.093e+00
+educaGroupCompleted secondary education            3.805e-01  1.463e+00
+educaGroupHigher education                         7.236e-01  2.062e+00
+                                                    se(coef)  robust se       z
+male1                                              2.450e-05  7.576e-02 -12.675
+age                                                1.538e-06  5.861e-03   0.991
+midWeek1                                           3.802e-05  8.988e-02   1.791
+hhldSize                                           1.680e-05  1.069e-01  -2.478
+nChild                                             1.986e-05  1.047e-01   3.785
+ageChild                                           2.630e-06  1.056e-02  -4.338
+urban1                                             2.970e-05  8.623e-02  -0.083
+incomelowest 25%                                   4.489e-05  1.986e-01  -1.916
+incomemiddle 50%                                   2.409e-05  7.618e-02  -2.155
+familyStatusIn Couple (Spouse employed full-time)  3.693e-05  9.997e-02   5.879
+familyStatusIn Couple (Spouse employed part-time)  4.593e-05  1.347e-01   3.556
+familyStatusIn Couple (Spouse employment N/A)      8.619e-05  2.997e-01  -1.922
+familyStatusSingle Parent                          4.457e-05  1.771e-01   4.168
+educaGroupCompleted secondary education            5.505e-05  1.951e-01   1.951
+educaGroupHigher education                         5.320e-05  1.808e-01   4.002
+                                                  Pr(>|z|)    
+male1                                              < 2e-16 ***
+age                                               0.321897    
+midWeek1                                          0.073338 .  
+hhldSize                                          0.013199 *  
+nChild                                            0.000154 ***
+ageChild                                          1.43e-05 ***
+urban1                                            0.934086    
+incomelowest 25%                                  0.055413 .  
+incomemiddle 50%                                  0.031146 *  
+familyStatusIn Couple (Spouse employed full-time) 4.13e-09 ***
+familyStatusIn Couple (Spouse employed part-time) 0.000376 ***
+familyStatusIn Couple (Spouse employment N/A)     0.054641 .  
+familyStatusSingle Parent                         3.07e-05 ***
+educaGroupCompleted secondary education           0.051103 .  
+educaGroupHigher education                        6.28e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3828     2.6123
+age                                                  1.0058     0.9942
+midWeek1                                             1.1746     0.8513
+hhldSize                                             0.7673     1.3033
+nChild                                               1.4860     0.6729
+ageChild                                             0.9552     1.0469
+urban1                                               0.9929     1.0072
+incomelowest 25%                                     0.6836     1.4629
+incomemiddle 50%                                     0.8486     1.1784
+familyStatusIn Couple (Spouse employed full-time)    1.7999     0.5556
+familyStatusIn Couple (Spouse employed part-time)    1.6143     0.6195
+familyStatusIn Couple (Spouse employment N/A)        0.5621     1.7789
+familyStatusSingle Parent                            2.0925     0.4779
+educaGroupCompleted secondary education              1.4631     0.6835
+educaGroupHigher education                           2.0618     0.4850
+                                                  lower .95 upper .95
+male1                                                0.3300    0.4441
+age                                                  0.9943    1.0174
+midWeek1                                             0.9849    1.4009
+hhldSize                                             0.6223    0.9461
+nChild                                               1.2104    1.8244
+ageChild                                             0.9357    0.9752
+urban1                                               0.8385    1.1757
+incomelowest 25%                                     0.4632    1.0088
+incomemiddle 50%                                     0.7309    0.9852
+familyStatusIn Couple (Spouse employed full-time)    1.4796    2.1895
+familyStatusIn Couple (Spouse employed part-time)    1.2398    2.1019
+familyStatusIn Couple (Spouse employment N/A)        0.3124    1.0115
+familyStatusSingle Parent                            1.4788    2.9611
+educaGroupCompleted secondary education              0.9982    2.1444
+educaGroupHigher education                           1.4466    2.9387
+
+Concordance= 0.717  (se = 0.008 )
+Likelihood ratio test= 5.574e+09  on 15 df,   p=<2e-16
+Wald test            = 570.8  on 15 df,   p=<2e-16
+Score (logrank) test = 5.249e+09  on 15 df,   p=<2e-16,   Robust = 42.26  p=2e-04
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+--- Cox causa-especifico: MIXTA ---
+Call:
+coxph(formula = Surv(tiempo, estatus_mixed) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + familyStatus + 
+    educaGroup, data = dfA, weights = ocombwt, x = TRUE, cluster = hldid)
+
+  n= 36339, number of events= 285 
+
+                                                        coef  exp(coef)
+male1                                             -8.687e-01  4.195e-01
+age                                               -2.534e-03  9.975e-01
+midWeek1                                          -4.877e-02  9.524e-01
+hhldSize                                          -1.799e-01  8.354e-01
+nChild                                             3.291e-01  1.390e+00
+ageChild                                          -7.887e-02  9.242e-01
+urban1                                             2.708e-01  1.311e+00
+incomelowest 25%                                  -2.315e-01  7.934e-01
+incomemiddle 50%                                  -7.914e-02  9.239e-01
+familyStatusIn Couple (Spouse employed full-time)  4.826e-01  1.620e+00
+familyStatusIn Couple (Spouse employed part-time)  4.303e-01  1.538e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.460e-01  5.793e-01
+familyStatusSingle Parent                          6.836e-01  1.981e+00
+educaGroupCompleted secondary education            4.138e-01  1.513e+00
+educaGroupHigher education                         4.876e-01  1.628e+00
+                                                    se(coef)  robust se      z
+male1                                              5.078e-05  1.278e-01 -6.796
+age                                                3.146e-06  8.894e-03 -0.285
+midWeek1                                           7.265e-05  1.320e-01 -0.370
+hhldSize                                           3.194e-05  1.804e-01 -0.997
+nChild                                             3.836e-05  2.682e-01  1.227
+ageChild                                           5.656e-06  1.335e-02 -5.906
+urban1                                             6.684e-05  1.611e-01  1.680
+incomelowest 25%                                   8.787e-05  2.697e-01 -0.858
+incomemiddle 50%                                   5.092e-05  1.668e-01 -0.475
+familyStatusIn Couple (Spouse employed full-time)  7.275e-05  2.027e-01  2.381
+familyStatusIn Couple (Spouse employed part-time)  9.065e-05  3.616e-01  1.190
+familyStatusIn Couple (Spouse employment N/A)      1.606e-04  5.652e-01 -0.966
+familyStatusSingle Parent                          8.772e-05  1.912e-01  3.575
+educaGroupCompleted secondary education            9.964e-05  2.771e-01  1.493
+educaGroupHigher education                         9.811e-05  3.029e-01  1.610
+                                                  Pr(>|z|)    
+male1                                             1.07e-11 ***
+age                                               0.775684    
+midWeek1                                          0.711675    
+hhldSize                                          0.318692    
+nChild                                            0.219758    
+ageChild                                          3.50e-09 ***
+urban1                                            0.092923 .  
+incomelowest 25%                                  0.390720    
+incomemiddle 50%                                  0.635141    
+familyStatusIn Couple (Spouse employed full-time) 0.017260 *  
+familyStatusIn Couple (Spouse employed part-time) 0.234063    
+familyStatusIn Couple (Spouse employment N/A)     0.334066    
+familyStatusSingle Parent                         0.000351 ***
+educaGroupCompleted secondary education           0.135425    
+educaGroupHigher education                        0.107474    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.4195     2.3838
+age                                                  0.9975     1.0025
+midWeek1                                             0.9524     1.0500
+hhldSize                                             0.8354     1.1971
+nChild                                               1.3897     0.7196
+ageChild                                             0.9242     1.0821
+urban1                                               1.3110     0.7628
+incomelowest 25%                                     0.7934     1.2604
+incomemiddle 50%                                     0.9239     1.0824
+familyStatusIn Couple (Spouse employed full-time)    1.6203     0.6172
+familyStatusIn Couple (Spouse employed part-time)    1.5376     0.6503
+familyStatusIn Couple (Spouse employment N/A)        0.5793     1.7263
+familyStatusSingle Parent                            1.9810     0.5048
+educaGroupCompleted secondary education              1.5125     0.6611
+educaGroupHigher education                           1.6284     0.6141
+                                                  lower .95 upper .95
+male1                                                0.3265    0.5389
+age                                                  0.9802    1.0150
+midWeek1                                             0.7354    1.2335
+hhldSize                                             0.5865    1.1897
+nChild                                               0.8216    2.3506
+ageChild                                             0.9003    0.9487
+urban1                                               0.9559    1.7979
+incomelowest 25%                                     0.4677    1.3459
+incomemiddle 50%                                     0.6663    1.2811
+familyStatusIn Couple (Spouse employed full-time)    1.0891    2.4105
+familyStatusIn Couple (Spouse employed part-time)    0.7570    3.1234
+familyStatusIn Couple (Spouse employment N/A)        0.1913    1.7539
+familyStatusSingle Parent                            1.3617    2.8817
+educaGroupCompleted secondary education              0.8786    2.6038
+educaGroupHigher education                           0.8993    2.9487
+
+Concordance= 0.708  (se = 0.02 )
+Likelihood ratio test= 1.215e+09  on 15 df,   p=<2e-16
+Wald test            = 155.3  on 15 df,   p=<2e-16
+Score (logrank) test = 1.166e+09  on 15 df,   p=<2e-16,   Robust = 57.97  p=6e-07
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+--- HR de genero (male) por causa ---
+                   modelo    HR lower upper eventos
+1   Agrupado (pure+mixed) 0.389 0.346 0.438    1544
+2  Causa-especifico: pure 0.383 0.330 0.444    1259
+3 Causa-especifico: mixed 0.420 0.327 0.539     285
+
+--- Fine-Gray (subdistribucion) para interrupcion PURA ---
+Call:
+coxph(formula = as.formula(paste("Surv(fgstart, fgstop, fgstatus) ~", 
+    paste(cov_cr, collapse = " + "))), data = fg_data, weights = fgwt)
+
+  n= 48252, number of events= 1259 
+
+                                                        coef  exp(coef)
+male1                                             -9.516e-01  3.861e-01
+age                                                5.916e-03  1.006e+00
+midWeek1                                           1.628e-01  1.177e+00
+hhldSize                                          -2.640e-01  7.679e-01
+nChild                                             3.931e-01  1.482e+00
+ageChild                                          -4.532e-02  9.557e-01
+urban1                                            -1.046e-02  9.896e-01
+incomelowest 25%                                  -3.800e-01  6.839e-01
+incomemiddle 50%                                  -1.659e-01  8.471e-01
+familyStatusIn Couple (Spouse employed full-time)  5.828e-01  1.791e+00
+familyStatusIn Couple (Spouse employed part-time)  4.749e-01  1.608e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.742e-01  5.632e-01
+familyStatusSingle Parent                          7.331e-01  2.081e+00
+educaGroupCompleted secondary education            3.783e-01  1.460e+00
+educaGroupHigher education                         7.216e-01  2.058e+00
+                                                    se(coef)  robust se       z
+male1                                              2.449e-05  8.110e-02 -11.735
+age                                                1.538e-06  5.899e-03   1.003
+midWeek1                                           3.801e-05  9.021e-02   1.805
+hhldSize                                           1.681e-05  9.432e-02  -2.799
+nChild                                             1.986e-05  1.029e-01   3.819
+ageChild                                           2.630e-06  8.983e-03  -5.045
+urban1                                             2.970e-05  9.817e-02  -0.107
+incomelowest 25%                                   4.488e-05  1.397e-01  -2.720
+incomemiddle 50%                                   2.410e-05  8.040e-02  -2.063
+familyStatusIn Couple (Spouse employed full-time)  3.694e-05  1.242e-01   4.692
+familyStatusIn Couple (Spouse employed part-time)  4.593e-05  1.600e-01   2.968
+familyStatusIn Couple (Spouse employment N/A)      8.620e-05  3.281e-01  -1.750
+familyStatusSingle Parent                          4.457e-05  1.653e-01   4.436
+educaGroupCompleted secondary education            5.505e-05  2.027e-01   1.866
+educaGroupHigher education                         5.321e-05  1.948e-01   3.704
+                                                  Pr(>|z|)    
+male1                                              < 2e-16 ***
+age                                               0.315894    
+midWeek1                                          0.071124 .  
+hhldSize                                          0.005120 ** 
+nChild                                            0.000134 ***
+ageChild                                          4.54e-07 ***
+urban1                                            0.915172    
+incomelowest 25%                                  0.006535 ** 
+incomemiddle 50%                                  0.039097 *  
+familyStatusIn Couple (Spouse employed full-time) 2.71e-06 ***
+familyStatusIn Couple (Spouse employed part-time) 0.003002 ** 
+familyStatusIn Couple (Spouse employment N/A)     0.080090 .  
+familyStatusSingle Parent                         9.18e-06 ***
+educaGroupCompleted secondary education           0.062026 .  
+educaGroupHigher education                        0.000212 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3861     2.5900
+age                                                  1.0059     0.9941
+midWeek1                                             1.1768     0.8498
+hhldSize                                             0.7679     1.3022
+nChild                                               1.4815     0.6750
+ageChild                                             0.9557     1.0464
+urban1                                               0.9896     1.0105
+incomelowest 25%                                     0.6839     1.4623
+incomemiddle 50%                                     0.8471     1.1804
+familyStatusIn Couple (Spouse employed full-time)    1.7910     0.5583
+familyStatusIn Couple (Spouse employed part-time)    1.6078     0.6220
+familyStatusIn Couple (Spouse employment N/A)        0.5632     1.7757
+familyStatusSingle Parent                            2.0815     0.4804
+educaGroupCompleted secondary education              1.4598     0.6850
+educaGroupHigher education                           2.0578     0.4860
+                                                  lower .95 upper .95
+male1                                                0.3294    0.4526
+age                                                  0.9944    1.0176
+midWeek1                                             0.9861    1.4044
+hhldSize                                             0.6383    0.9239
+nChild                                               1.2109    1.8127
+ageChild                                             0.9390    0.9727
+urban1                                               0.8164    1.1996
+incomelowest 25%                                     0.5200    0.8993
+incomemiddle 50%                                     0.7236    0.9917
+familyStatusIn Couple (Spouse employed full-time)    1.4040    2.2846
+familyStatusIn Couple (Spouse employed part-time)    1.1750    2.2001
+familyStatusIn Couple (Spouse employment N/A)        0.2961    1.0713
+familyStatusSingle Parent                            1.5055    2.8777
+educaGroupCompleted secondary education              0.9812    2.1719
+educaGroupHigher education                           1.4046    3.0147
+
+Concordance= 0.716  (se = 0.01 )
+Likelihood ratio test= 5.507e+09  on 15 df,   p=<2e-16
+Wald test            = 396.7  on 15 df,   p=<2e-16
+Score (logrank) test = 5.182e+09  on 15 df,   p=<2e-16,   Robust = 442.8  p=<2e-16
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+
+--- RANDOM SURVIVAL FOREST (con pesos) ---
+
+--- RSF baseline ---
+                         Sample size: 36339
+                    Number of deaths: 1544
+                     Number of trees: 500
+           Forest terminal node size: 15
+       Average no. of terminal nodes: 931.888
+No. of variables tried at each split: 4
+              Total no. of variables: 12
+       Resampling used to grow trees: swor
+    Resample size used to grow trees: 22966
+                            Analysis: RSF
+                              Family: surv
+                      Splitting rule: logrank *random*
+       Number of random split points: 10
+                          (OOB) CRPS: 40.03998582
+             (OOB) standardized CRPS: 0.04448887
+   (OOB) Requested performance error: 0.38298892
+
+
+               Importance   Relative Imp
+ageChild           0.0941         1.0000
+male               0.0748         0.7946
+familyStatus       0.0280         0.2970
+midWeek            0.0266         0.2826
+educaGroup         0.0124         0.1314
+cohab              0.0042         0.0441
+hhldSize          -0.0029        -0.0310
+age               -0.0034        -0.0356
+citizen           -0.0036        -0.0383
+income            -0.0084        -0.0895
+urban             -0.0132        -0.1403
+nChild            -0.0263        -0.2798
+  [fig] fig_rsf_vimp.pdf 
+
+--- RSF optimizado: se usa baseline (nodesize=15, mtry=4, ntree=500) ---
+C-index RSF optimizado: 0.617 
+
+
+--- SHAP VALUES (muestra n=2000, nsim=50) ---
+
+--- Importancia SHAP (|valor medio|) ---
+       Variable SHAP_mean
+1          male 1.1239468
+2      ageChild 0.8661413
+3  familyStatus 0.6894017
+4        nChild 0.6134335
+5           age 0.5850051
+6      hhldSize 0.4791890
+7    educaGroup 0.4694552
+8       midWeek 0.3868910
+9        income 0.3350313
+10        urban 0.1410802
+11      citizen 0.1286654
+12        cohab 0.1253001
+  [fig] fig_shap_importance.pdf 
+  [fig] fig_shap_male.pdf 
+  [fig] fig_shap_ageChild.pdf 
+  [fig] fig_shap_familyStatus.pdf 
+  [fig] fig_shap_nChild.pdf 
+  [fig] fig_shap_age.pdf 
+  [fig] fig_shap_hhldSize.pdf 
+  [fig] fig_shap_educaGroup.pdf 
+
+
+--- ALE PLOTS (Accumulated Local Effects, muestra n=2000) ---
+  [fig] fig_ale_us_male.pdf 
+ALE: male completado
+  [fig] fig_ale_us_ageChild.pdf 
+ALE: ageChild completado
+  [fig] fig_ale_us_familyStatus.pdf 
+ALE: familyStatus completado
+  [fig] fig_ale_us_nChild.pdf 
+ALE: nChild completado
+  [fig] fig_ale_us_age.pdf 
+ALE: age completado
+  [fig] fig_ale_us_hhldSize.pdf 
+ALE: hhldSize completado
+  [fig] fig_ale_us_educaGroup.pdf 
+ALE: educaGroup completado
+  [fig] fig_ale_us_midWeek.pdf 
+ALE: midWeek completado
+  [fig] fig_ale_us_income.pdf 
+ALE: income completado
+
+
+--- GRADIENT BOOSTING SURVIVAL (gbm, familia CoxPH) ---
+CV: 1 
+CV: 2 
+CV: 3 
+CV: 4 
+CV: 5 
+Iteración óptima (CV): 302 
+  [fig] fig_gbm_convergence.pdf 
+
+--- Importancia GBM ---
+                      var    rel.inf
+male                 male 21.7136007
+ageChild         ageChild 19.7428784
+age                   age 13.2657908
+familyStatus familyStatus 10.6599393
+nChild             nChild  8.9949171
+hhldSize         hhldSize  8.6613418
+educaGroup     educaGroup  6.1217391
+midWeek           midWeek  5.6633653
+income             income  2.6809794
+cohab               cohab  0.9616884
+urban               urban  0.7939591
+citizen           citizen  0.7398007
+  [fig] fig_gbm_importance.pdf 
+C-index GBM: 0.7108 
+
+
+--- COMPARACIÓN DE MODELOS ---
+C-index Cox (base):         0.7134
+C-index Cox (estratificado): 0.7198
+C-index RSF (optimizado):   0.6170
+C-index GBM:                0.7108
+
+--- Brier Score integrado (pec) ---
+
+Prediction error curves
+
+Prediction models:
+
+Reference       Cox Cox_Strat       RSF 
+Reference       Cox Cox_Strat       RSF 
+
+Right-censored response of a survival model
+
+No.Observations: 36339 
+
+Pattern:
+                Freq 
+ event          1544 
+ right.censored 34795
+
+IPCW: marginal model
+
+No data splitting: either apparent or independent test sample performance
+
+Cumulative prediction error, aka Integrated Brier score  (IBS)
+ aka Cumulative rank probability score
+
+Range of integration: 0 and time=1350 :
+
+
+Integrated Brier score (crps):
+
+          IBS[0;time=1350)
+Reference            0.058
+Cox                  0.054
+Cox_Strat            0.053
+RSF                  0.038
+
+--- Integrated Brier Score ---
+
+Integrated Brier score (crps):
+
+          IBS[0;time=40) IBS[0;time=100) IBS[0;time=230) IBS[0;time=350)
+Reference          0.002           0.005           0.009           0.012
+Cox                0.002           0.005           0.009           0.012
+Cox_Strat          0.002           0.005           0.009           0.012
+RSF                0.002           0.005           0.008           0.010
+          IBS[0;time=420) IBS[0;time=470) IBS[0;time=500) IBS[0;time=530)
+Reference           0.014           0.016           0.017           0.019
+Cox                 0.014           0.015           0.017           0.018
+Cox_Strat           0.014           0.015           0.017           0.018
+RSF                 0.012           0.013           0.014           0.016
+          IBS[0;time=580)
+Reference           0.022
+Cox                 0.021
+Cox_Strat           0.021
+RSF                 0.018
+
+
+--- SENSIBILIDAD AL UMBRAL DE CENSURA (HR de genero) ---
+HR de genero (male) segun umbral de recalificacion a censura:
+    umbral eventos    HR lower upper
+1       90    1371 0.385 0.339 0.436
+2      120    1544 0.389 0.346 0.438
+3      150    1641 0.404 0.358 0.456
+4 sin tope    1916 0.447 0.400 0.501
+
+
+========== ANÁLISIS MULTI-PAÍS (2007+) ==========
+
+--- Categorizando actividades [ Multi-país 2007+ ] ---
+--- Construyendo matriz de secuencias ---
+--- Detectando interrupciones ---
+Distribución ANTES de recalificar interrupciones > 120 min:
+
+          Censored Mixed Interruption  Pure Interruption 
+             94.82               1.79               3.39 
+Distribución DESPUÉS de recalificar:
+
+          Censored Mixed Interruption  Pure Interruption 
+             95.85               0.97               3.19 
+Dataset final [ Multi-país 2007+ ]: n = 42344 | eventos = 1915 
+
+>>> COMPOSICIÓN DE EVENTOS PARA TABLA 2 [ Multi-país 2007+ ] (muestra final) <<<
+  Pure interruptions  :  3.53%
+  Mixed interruptions :  0.99%
+  Any interruption    :  4.52%  (= pure + mixed)
+  Censored            : 95.48%
+  CHECK suma          : 100.00%  | n = 42344
+
+--- Distribución por país ---
+# A tibble: 8 × 5
+  country            n eventos pct_evt pct_female
+  <fct>          <int>   <int>   <dbl>      <dbl>
+1 Armenia          405      17    4.2        41.5
+2 Belgium         1324      81    6.12       49.7
+3 Canada          1854     101    5.45       50.9
+4 Finland          685      47    6.86       50.7
+5 France          3071     154    5.01       48.6
+6 Spain           2250      72    3.2        46  
+7 United Kingdom  1440     137    9.51       50.4
+8 United States  31315    1306    4.17       50.9
+  [fig] fig_event_rates.pdf 
+  [fig] fig_activity_states_multi.pdf 
+
+--- KM por género (comparación entre países) ---
+  [fig] fig_km_multicountry.pdf 
+
+
+--- POOLED COX CON FE DE PAÍS (US = referencia) ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + educaGroup + 
+    country, data = dfM, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 42342, number of events= 1915 
+
+                                              coef  exp(coef)   se(coef)
+male1                                   -1.087e+00  3.372e-01  2.159e-05
+age                                      4.923e-03  1.005e+00  1.316e-06
+midWeek1                                 1.404e-01  1.151e+00  3.608e-05
+hhldSize                                -3.832e-01  6.817e-01  1.511e-05
+nChild                                   5.233e-01  1.688e+00  1.788e-05
+ageChild                                -4.934e-02  9.519e-01  2.375e-06
+urban1                                   7.332e-02  1.076e+00  2.944e-05
+incomelowest 25%                        -4.142e-01  6.608e-01  4.029e-05
+incomemiddle 50%                        -2.022e-01  8.169e-01  2.231e-05
+educaGroupCompleted secondary education  4.436e-01  1.558e+00  5.176e-05
+educaGroupHigher education               7.523e-01  2.122e+00  5.004e-05
+countryArmenia                           1.527e+00  4.604e+00  7.782e-03
+countryBelgium                           1.592e+00  4.914e+00  3.200e-03
+countryCanada                            4.674e-01  1.596e+00  2.317e-03
+countryFinland                           2.703e+00  1.492e+01  1.341e-01
+countryFrance                            5.786e-01  1.784e+00  7.400e-02
+countrySpain                            -1.247e-01  8.827e-01  1.306e-03
+countryUnited Kingdom                    2.548e+00  1.278e+01  6.846e-02
+                                         robust se       z Pr(>|z|)    
+male1                                    7.000e-02 -15.531  < 2e-16 ***
+age                                      4.295e-03   1.146  0.25175    
+midWeek1                                 9.718e-02   1.445  0.14841    
+hhldSize                                 7.121e-02  -5.381 7.41e-08 ***
+nChild                                   7.763e-02   6.741 1.57e-11 ***
+ageChild                                 8.552e-03  -5.769 7.96e-09 ***
+urban1                                   9.408e-02   0.779  0.43579    
+incomelowest 25%                         1.331e-01  -3.112  0.00186 ** 
+incomemiddle 50%                         8.458e-02  -2.391  0.01681 *  
+educaGroupCompleted secondary education  2.486e-01   1.784  0.07439 .  
+educaGroupHigher education               2.347e-01   3.205  0.00135 ** 
+countryArmenia                           3.402e-01   4.489 7.17e-06 ***
+countryBelgium                           1.736e-01   9.173  < 2e-16 ***
+countryCanada                            6.522e-02   7.166 7.71e-13 ***
+countryFinland                           2.601e-01  10.392  < 2e-16 ***
+countryFrance                            1.250e-01   4.629 3.67e-06 ***
+countrySpain                             1.615e-01  -0.772  0.43993    
+countryUnited Kingdom                    1.372e-01  18.575  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                        exp(coef) exp(-coef) lower .95
+male1                                      0.3372    2.96585    0.2939
+age                                        1.0049    0.99509    0.9965
+midWeek1                                   1.1508    0.86898    0.9512
+hhldSize                                   0.6817    1.46695    0.5929
+nChild                                     1.6877    0.59254    1.4495
+ageChild                                   0.9519    1.05057    0.9360
+urban1                                     1.0761    0.92931    0.8949
+incomelowest 25%                           0.6608    1.51323    0.5091
+incomemiddle 50%                           0.8169    1.22412    0.6921
+educaGroupCompleted secondary education    1.5583    0.64173    0.9572
+educaGroupHigher education                 2.1218    0.47129    1.3394
+countryArmenia                             4.6039    0.21720    2.3636
+countryBelgium                             4.9138    0.20351    3.4970
+countryCanada                              1.5958    0.62664    1.4043
+countryFinland                            14.9200    0.06702    8.9616
+countryFrance                              1.7835    0.56069    1.3960
+countrySpain                               0.8827    1.13285    0.6432
+countryUnited Kingdom                     12.7780    0.07826    9.7659
+                                        upper .95
+male1                                      0.3868
+age                                        1.0134
+midWeek1                                   1.3922
+hhldSize                                   0.7838
+nChild                                     1.9650
+ageChild                                   0.9679
+urban1                                     1.2940
+incomelowest 25%                           0.8579
+incomemiddle 50%                           0.9642
+educaGroupCompleted secondary education    2.5367
+educaGroupHigher education                 3.3614
+countryArmenia                             8.9678
+countryBelgium                             6.9047
+countryCanada                              1.8134
+countryFinland                            24.8401
+countryFrance                              2.2786
+countrySpain                               1.2114
+countryUnited Kingdom                     16.7192
+
+Concordance= 0.705  (se = 0.01 )
+Likelihood ratio test= 5.433e+09  on 18 df,   p=<2e-16
+Wald test            = 1130  on 18 df,   p=<2e-16
+Score (logrank) test = 5.23e+09  on 18 df,   p=<2e-16,   Robust = 154.8  p=<2e-16
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+
+C-index pooled: 0.7046
+HR genero (male) pooled: 0.337 (0.294-0.387)
+
+--- Efectos fijos de país (HR baseline vs. EE.UU.) ---
+         country     HR lower upper
+1        Armenia  4.604 2.364  8.97
+2        Belgium  4.914 3.497  6.90
+3         Canada  1.596 1.404  1.81
+4        Finland 14.920 8.961 24.84
+5         France  1.784 1.396  2.28
+6          Spain  0.883 0.643  1.21
+7 United Kingdom 12.778 9.766 16.72
+
+
+--- COX POR PAÍS (modelos separados, pesos + clustering) ---
+
+=== Belgium ===
+
+--- Cox results: Belgium ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + income + familyStatus, data = df_c, 
+    weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 1324, number of events= 81 
+
+                                coef  exp(coef)   se(coef)  robust se      z
+male1                     -0.6574231  0.5181849  0.0077670  0.2807846 -2.341
+age                        0.0366141  1.0372927  0.0004268  0.0161868  2.262
+midWeek1                   0.1248254  1.1329507  0.0102733  0.4011831  0.311
+hhldSize                  -0.5619117  0.5701181  0.0083702  0.3262604 -1.722
+nChild                     0.1693638  1.1845510  0.0095080  0.4125405  0.411
+ageChild                  -0.1684862  0.8449429  0.0006270  0.0259298 -6.498
+incomelowest 25%          -0.6649307  0.5143092  0.0122255  0.4731344 -1.405
+incomemiddle 50%          -0.1796009  0.8356036  0.0073481  0.2813801 -0.638
+familyStatusSingle Parent -0.1853496  0.8308138  0.0084319  0.2595938 -0.714
+                          Pr(>|z|)    
+male1                       0.0192 *  
+age                         0.0237 *  
+midWeek1                    0.7557    
+hhldSize                    0.0850 .  
+nChild                      0.6814    
+ageChild                  8.15e-11 ***
+incomelowest 25%            0.1599    
+incomemiddle 50%            0.5233    
+familyStatusSingle Parent   0.4752    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                          exp(coef) exp(-coef) lower .95 upper .95
+male1                        0.5182     1.9298    0.2989    0.8984
+age                          1.0373     0.9640    1.0049    1.0707
+midWeek1                     1.1330     0.8827    0.5161    2.4871
+hhldSize                     0.5701     1.7540    0.3008    1.0806
+nChild                       1.1846     0.8442    0.5277    2.6589
+ageChild                     0.8449     1.1835    0.8031    0.8890
+incomelowest 25%             0.5143     1.9444    0.2035    1.3000
+incomemiddle 50%             0.8356     1.1967    0.4814    1.4505
+familyStatusSingle Parent    0.8308     1.2036    0.4995    1.3819
+
+Concordance= 0.814  (se = 0.033 )
+Likelihood ratio test= 129439  on 9 df,   p=<2e-16
+Wald test            = 53.67  on 9 df,   p=2e-08
+Score (logrank) test = 103242  on 9 df,   p=<2e-16,   Robust = 46.19  p=6e-07
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: Belgium 
+                chisq df       p
+male           823.46  1 < 2e-16
+age           1017.77  1 < 2e-16
+midWeek          1.27  1    0.26
+hhldSize      1623.12  1 < 2e-16
+nChild          37.66  1 8.4e-10
+ageChild       150.14  1 < 2e-16
+income        4122.46  2 < 2e-16
+familyStatus 10336.96  1 < 2e-16
+GLOBAL       17202.70  9 < 2e-16
+
+=== Canada ===
+  Cox fit error [ Canada ]: (subscript) subscrito lógico muy largo 
+
+=== Finland ===
+
+--- Cox results: Finland ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + educaGroup + 
+    familyStatus, data = df_c, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 685, number of events= 47 
+
+                                            coef exp(coef) se(coef) robust se
+male1                                   -0.42081   0.65652  0.32565   0.32529
+age                                      0.03794   1.03866  0.02697   0.02419
+midWeek1                                 0.52435   1.68936  0.48946   0.59102
+hhldSize                                 0.09844   1.10345  0.45345   0.33842
+nChild                                  -0.19497   0.82286  0.48259   0.40069
+ageChild                                -0.18844   0.82825  0.04949   0.05746
+urban1                                   1.82815   6.22238  0.83243   0.71126
+incomelowest 25%                         0.34935   1.41814  0.59132   0.62638
+incomemiddle 50%                        -0.17656   0.83815  0.37429   0.39985
+educaGroupCompleted secondary education -0.49344   0.61052  1.22520   1.11686
+educaGroupHigher education               3.04461  21.00175  1.26657   1.18114
+familyStatusSingle Parent                0.90365   2.46860  0.63062   0.64020
+                                             z Pr(>|z|)   
+male1                                   -1.294  0.19579   
+age                                      1.568  0.11679   
+midWeek1                                 0.887  0.37498   
+hhldSize                                 0.291  0.77113   
+nChild                                  -0.487  0.62655   
+ageChild                                -3.280  0.00104 **
+urban1                                   2.570  0.01016 * 
+incomelowest 25%                         0.558  0.57704   
+incomemiddle 50%                        -0.442  0.65881   
+educaGroupCompleted secondary education -0.442  0.65863   
+educaGroupHigher education               2.578  0.00995 **
+familyStatusSingle Parent                1.412  0.15810   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                        exp(coef) exp(-coef) lower .95
+male1                                      0.6565    1.52319    0.3470
+age                                        1.0387    0.96278    0.9906
+midWeek1                                   1.6894    0.59194    0.5304
+hhldSize                                   1.1035    0.90625    0.5684
+nChild                                     0.8229    1.21528    0.3752
+ageChild                                   0.8282    1.20737    0.7400
+urban1                                     6.2224    0.16071    1.5436
+incomelowest 25%                           1.4181    0.70515    0.4155
+incomemiddle 50%                           0.8382    1.19310    0.3828
+educaGroupCompleted secondary education    0.6105    1.63794    0.0684
+educaGroupHigher education                21.0018    0.04762    2.0743
+familyStatusSingle Parent                  2.4686    0.40509    0.7039
+                                        upper .95
+male1                                       1.242
+age                                         1.089
+midWeek1                                    5.380
+hhldSize                                    2.142
+nChild                                      1.805
+ageChild                                    0.927
+urban1                                     25.083
+incomelowest 25%                            4.841
+incomemiddle 50%                            1.835
+educaGroupCompleted secondary education     5.450
+educaGroupHigher education                212.641
+familyStatusSingle Parent                   8.657
+
+Concordance= 0.767  (se = 0.04 )
+Likelihood ratio test= 38.77  on 12 df,   p=1e-04
+Wald test            = 27.94  on 12 df,   p=0.006
+Score (logrank) test = 36.06  on 12 df,   p=3e-04,   Robust = 21.17  p=0.05
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: Finland 
+               chisq df     p
+male          0.0453  1 0.832
+age           0.0767  1 0.782
+midWeek       0.0974  1 0.755
+hhldSize      1.1274  1 0.288
+nChild        0.1001  1 0.752
+ageChild      0.5431  1 0.461
+urban         0.1724  1 0.678
+income        5.0565  2 0.080
+educaGroup    0.3907  2 0.823
+familyStatus  3.8193  1 0.051
+GLOBAL       10.4660 12 0.575
+
+=== France ===
+
+--- Cox results: France ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + income + educaGroup + familyStatus, 
+    data = df_c, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 3070, number of events= 154 
+
+                                                      coef exp(coef) se(coef)
+male1                                             -0.94193   0.38988  0.17224
+age                                                0.01793   1.01810  0.01387
+midWeek1                                          -0.15275   0.85834  0.27180
+hhldSize                                          -0.41031   0.66344  0.25222
+nChild                                             0.37278   1.45176  0.26322
+ageChild                                          -0.14920   0.86140  0.02417
+incomelowest 25%                                  -0.07678   0.92609  0.32364
+incomemiddle 50%                                  -0.26284   0.76887  0.16271
+educaGroupHigher education                         1.95181   7.04141  1.22715
+familyStatusIn Couple (Spouse employed full-time)  0.36005   1.43340  0.21249
+familyStatusIn Couple (Spouse employed part-time)  0.16307   1.17712  0.28581
+familyStatusSingle Parent                          0.44436   1.55950  0.41258
+                                                  robust se      z Pr(>|z|)    
+male1                                               0.19307 -4.879 1.07e-06 ***
+age                                                 0.01357  1.322   0.1863    
+midWeek1                                            0.23737 -0.644   0.5199    
+hhldSize                                            0.30121 -1.362   0.1731    
+nChild                                              0.31357  1.189   0.2345    
+ageChild                                            0.02676 -5.575 2.48e-08 ***
+incomelowest 25%                                    0.36097 -0.213   0.8316    
+incomemiddle 50%                                    0.18747 -1.402   0.1609    
+educaGroupHigher education                          1.01329  1.926   0.0541 .  
+familyStatusIn Couple (Spouse employed full-time)   0.25998  1.385   0.1661    
+familyStatusIn Couple (Spouse employed part-time)   0.33286  0.490   0.6242    
+familyStatusSingle Parent                           0.50782  0.875   0.3816    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3899     2.5649
+age                                                  1.0181     0.9822
+midWeek1                                             0.8583     1.1650
+hhldSize                                             0.6634     1.5073
+nChild                                               1.4518     0.6888
+ageChild                                             0.8614     1.1609
+incomelowest 25%                                     0.9261     1.0798
+incomemiddle 50%                                     0.7689     1.3006
+educaGroupHigher education                           7.0414     0.1420
+familyStatusIn Couple (Spouse employed full-time)    1.4334     0.6976
+familyStatusIn Couple (Spouse employed part-time)    1.1771     0.8495
+familyStatusSingle Parent                            1.5595     0.6412
+                                                  lower .95 upper .95
+male1                                                0.2670    0.5692
+age                                                  0.9914    1.0455
+midWeek1                                             0.5390    1.3668
+hhldSize                                             0.3676    1.1973
+nChild                                               0.7852    2.6841
+ageChild                                             0.8174    0.9078
+incomelowest 25%                                     0.4565    1.8789
+incomemiddle 50%                                     0.5324    1.1103
+educaGroupHigher education                           0.9664   51.3065
+familyStatusIn Couple (Spouse employed full-time)    0.8611    2.3860
+familyStatusIn Couple (Spouse employed part-time)    0.6130    2.2602
+familyStatusSingle Parent                            0.5764    4.2194
+
+Concordance= 0.728  (se = 0.023 )
+Likelihood ratio test= 120.3  on 12 df,   p=<2e-16
+Wald test            = 83.74  on 12 df,   p=8e-13
+Score (logrank) test = 111.1  on 12 df,   p=<2e-16,   Robust = 75.21  p=3e-11
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: France 
+                chisq df     p
+male          2.43393  1 0.119
+age           0.80534  1 0.370
+midWeek       0.00711  1 0.933
+hhldSize      1.57886  1 0.209
+nChild        1.70952  1 0.191
+ageChild      0.07040  1 0.791
+income        5.50679  2 0.064
+educaGroup    0.29132  1 0.589
+familyStatus  0.54177  3 0.910
+GLOBAL       15.96756 12 0.193
+
+=== Spain ===
+
+--- Cox results: Spain ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + educaGroup + 
+    familyStatus, data = df_c, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 2250, number of events= 72 
+
+                                                        coef  exp(coef)
+male1                                             -0.7644787  0.4655766
+age                                               -0.0021428  0.9978595
+midWeek1                                           0.1534544  1.1658546
+hhldSize                                           0.1408146  1.1512112
+nChild                                            -0.2512911  0.7777960
+ageChild                                          -0.1035512  0.9016298
+urban1                                             0.1726915  1.1884994
+incomelowest 25%                                   0.5743401  1.7759582
+incomemiddle 50%                                   0.7754180  2.1714997
+educaGroupCompleted secondary education           -1.6300061  0.1959284
+educaGroupHigher education                         0.1961784  1.2167440
+familyStatusIn Couple (Spouse employed full-time)  0.0990385  1.1041088
+familyStatusIn Couple (Spouse employed part-time)  0.2163493  1.2415360
+familyStatusIn Couple (Spouse employment N/A)     -0.2060751  0.8137720
+familyStatusOther                                  0.6271927  1.8723470
+familyStatusSingle Parent                         -0.5773106  0.5614062
+                                                    se(coef)  robust se      z
+male1                                              0.0029233  0.3046218 -2.510
+age                                                0.0002406  0.0214370 -0.100
+midWeek1                                           0.0035133  0.4588183  0.334
+hhldSize                                           0.0021034  0.1942541  0.725
+nChild                                             0.0028531  0.3449274 -0.729
+ageChild                                           0.0003444  0.0351558 -2.945
+urban1                                             0.0029564  0.3576305  0.483
+incomelowest 25%                                   0.0059101  0.6229814  0.922
+incomemiddle 50%                                   0.0041982  0.4059449  1.910
+educaGroupCompleted secondary education            0.0109867  1.0371383 -1.572
+educaGroupHigher education                         0.0070318  0.9201418  0.213
+familyStatusIn Couple (Spouse employed full-time)  0.0037052  0.4086746  0.242
+familyStatusIn Couple (Spouse employed part-time)  0.0053275  0.5727390  0.378
+familyStatusIn Couple (Spouse employment N/A)      0.0074511  0.6999426 -0.294
+familyStatusOther                                  0.0046324  0.5358922  1.170
+familyStatusSingle Parent                          0.0104011  0.8466276 -0.682
+                                                  Pr(>|z|)   
+male1                                              0.01209 * 
+age                                                0.92038   
+midWeek1                                           0.73804   
+hhldSize                                           0.46851   
+nChild                                             0.46629   
+ageChild                                           0.00322 **
+urban1                                             0.62918   
+incomelowest 25%                                   0.35657   
+incomemiddle 50%                                   0.05611 . 
+educaGroupCompleted secondary education            0.11603   
+educaGroupHigher education                         0.83117   
+familyStatusIn Couple (Spouse employed full-time)  0.80852   
+familyStatusIn Couple (Spouse employed part-time)  0.70562   
+familyStatusIn Couple (Spouse employment N/A)      0.76844   
+familyStatusOther                                  0.24185   
+familyStatusSingle Parent                          0.49531   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.4656     2.1479
+age                                                  0.9979     1.0021
+midWeek1                                             1.1659     0.8577
+hhldSize                                             1.1512     0.8687
+nChild                                               0.7778     1.2857
+ageChild                                             0.9016     1.1091
+urban1                                               1.1885     0.8414
+incomelowest 25%                                     1.7760     0.5631
+incomemiddle 50%                                     2.1715     0.4605
+educaGroupCompleted secondary education              0.1959     5.1039
+educaGroupHigher education                           1.2167     0.8219
+familyStatusIn Couple (Spouse employed full-time)    1.1041     0.9057
+familyStatusIn Couple (Spouse employed part-time)    1.2415     0.8055
+familyStatusIn Couple (Spouse employment N/A)        0.8138     1.2288
+familyStatusOther                                    1.8723     0.5341
+familyStatusSingle Parent                            0.5614     1.7812
+                                                  lower .95 upper .95
+male1                                               0.25627    0.8458
+age                                                 0.95680    1.0407
+midWeek1                                            0.47435    2.8654
+hhldSize                                            0.78669    1.6846
+nChild                                              0.39561    1.5292
+ageChild                                            0.84160    0.9659
+urban1                                              0.58964    2.3956
+incomelowest 25%                                    0.52378    6.0216
+incomemiddle 50%                                    0.97998    4.8117
+educaGroupCompleted secondary education             0.02566    1.4959
+educaGroupHigher education                          0.20043    7.3863
+familyStatusIn Couple (Spouse employed full-time)   0.49562    2.4597
+familyStatusIn Couple (Spouse employed part-time)   0.40406    3.8148
+familyStatusIn Couple (Spouse employment N/A)       0.20640    3.2084
+familyStatusOther                                   0.65499    5.3523
+familyStatusSingle Parent                           0.10681    2.9507
+
+Concordance= 0.726  (se = 0.033 )
+Likelihood ratio test= 378677  on 16 df,   p=<2e-16
+Wald test            = 45.58  on 16 df,   p=1e-04
+Score (logrank) test = 349584  on 16 df,   p=<2e-16,   Robust = 28.47  p=0.03
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: Spain 
+              chisq df      p
+male          14957  1 <2e-16
+age            4709  1 <2e-16
+midWeek        2606  1 <2e-16
+hhldSize      19789  1 <2e-16
+nChild         9354  1 <2e-16
+ageChild      15976  1 <2e-16
+urban         23869  1 <2e-16
+income        26340  2 <2e-16
+educaGroup     1801  2 <2e-16
+familyStatus  34418  5 <2e-16
+GLOBAL       116435 16 <2e-16
+
+=== United Kingdom ===
+
+--- Cox results: United Kingdom ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + income + educaGroup + familyStatus, 
+    data = df_c, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 1439, number of events= 137 
+
+                                            coef exp(coef) se(coef) robust se
+male1                                   -0.44374   0.64164  0.16279   0.18198
+age                                     -0.01158   0.98849  0.01165   0.01416
+midWeek1                                 0.12985   1.13866  0.24623   0.23197
+hhldSize                                -0.35517   0.70105  0.18311   0.23136
+nChild                                   0.50625   1.65906  0.19584   0.26040
+ageChild                                -0.13639   0.87251  0.02127   0.02510
+incomelowest 25%                        -0.58398   0.55767  0.38361   0.45923
+incomemiddle 50%                        -0.06211   0.93978  0.17961   0.23321
+educaGroupCompleted secondary education -0.89874   0.40708  0.41119   0.49353
+educaGroupHigher education              -0.91600   0.40012  0.18029   0.24177
+familyStatusSingle Parent               -0.27098   0.76263  0.36477   0.39176
+                                             z Pr(>|z|)    
+male1                                   -2.438 0.014755 *  
+age                                     -0.818 0.413461    
+midWeek1                                 0.560 0.575646    
+hhldSize                                -1.535 0.124740    
+nChild                                   1.944 0.051884 .  
+ageChild                                -5.435 5.49e-08 ***
+incomelowest 25%                        -1.272 0.203501    
+incomemiddle 50%                        -0.266 0.789992    
+educaGroupCompleted secondary education -1.821 0.068602 .  
+educaGroupHigher education              -3.789 0.000151 ***
+familyStatusSingle Parent               -0.692 0.489129    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                        exp(coef) exp(-coef) lower .95
+male1                                      0.6416     1.5585    0.4491
+age                                        0.9885     1.0116    0.9614
+midWeek1                                   1.1387     0.8782    0.7227
+hhldSize                                   0.7011     1.4264    0.4455
+nChild                                     1.6591     0.6028    0.9959
+ageChild                                   0.8725     1.1461    0.8306
+incomelowest 25%                           0.5577     1.7932    0.2267
+incomemiddle 50%                           0.9398     1.0641    0.5950
+educaGroupCompleted secondary education    0.4071     2.4565    0.1547
+educaGroupHigher education                 0.4001     2.4993    0.2491
+familyStatusSingle Parent                  0.7626     1.3112    0.3539
+                                        upper .95
+male1                                      0.9166
+age                                        1.0163
+midWeek1                                   1.7941
+hhldSize                                   1.1033
+nChild                                     2.7639
+ageChild                                   0.9165
+incomelowest 25%                           1.3718
+incomemiddle 50%                           1.4844
+educaGroupCompleted secondary education    1.0710
+educaGroupHigher education                 0.6427
+familyStatusSingle Parent                  1.6436
+
+Concordance= 0.758  (se = 0.024 )
+Likelihood ratio test= 156.4  on 11 df,   p=<2e-16
+Wald test            = 88.77  on 11 df,   p=3e-14
+Score (logrank) test = 146.2  on 11 df,   p=<2e-16,   Robust = 52.46  p=2e-07
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: United Kingdom 
+               chisq df    p
+male          2.3808  1 0.12
+age           0.2925  1 0.59
+midWeek       0.0108  1 0.92
+hhldSize      2.6498  1 0.10
+nChild        0.1513  1 0.70
+ageChild      0.3084  1 0.58
+income        0.7817  2 0.68
+educaGroup    1.6834  2 0.43
+familyStatus  0.4178  1 0.52
+GLOBAL       15.2553 11 0.17
+
+=== United States ===
+
+--- Cox results: United States ---
+Call:
+coxph(formula = Surv(tiempo, estatus) ~ male + age + midWeek + 
+    hhldSize + nChild + ageChild + urban + income + educaGroup + 
+    familyStatus, data = df_c, weights = ocombwt, x = TRUE, cluster = hldid_univ)
+
+  n= 31315, number of events= 1306 
+
+                                                        coef  exp(coef)
+male1                                             -9.467e-01  3.880e-01
+age                                                2.418e-03  1.002e+00
+midWeek1                                           1.276e-01  1.136e+00
+hhldSize                                          -2.579e-01  7.726e-01
+nChild                                             4.155e-01  1.515e+00
+ageChild                                          -4.891e-02  9.523e-01
+urban1                                             7.937e-02  1.083e+00
+incomelowest 25%                                  -3.777e-01  6.854e-01
+incomemiddle 50%                                  -1.748e-01  8.396e-01
+educaGroupCompleted secondary education            3.428e-01  1.409e+00
+educaGroupHigher education                         6.480e-01  1.912e+00
+familyStatusIn Couple (Spouse employed full-time)  6.080e-01  1.837e+00
+familyStatusIn Couple (Spouse employed part-time)  5.316e-01  1.702e+00
+familyStatusIn Couple (Spouse employment N/A)     -5.905e-01  5.540e-01
+familyStatusSingle Parent                          7.703e-01  2.160e+00
+                                                    se(coef)  robust se       z
+male1                                              2.348e-05  7.687e-02 -12.315
+age                                                1.484e-06  5.426e-03   0.446
+midWeek1                                           3.609e-05  9.820e-02   1.300
+hhldSize                                           1.582e-05  8.168e-02  -3.158
+nChild                                             1.865e-05  8.872e-02   4.683
+ageChild                                           2.546e-06  9.065e-03  -5.396
+urban1                                             2.951e-05  9.266e-02   0.857
+incomelowest 25%                                   4.257e-05  1.439e-01  -2.625
+incomemiddle 50%                                   2.322e-05  8.906e-02  -1.963
+educaGroupCompleted secondary education            5.177e-05  2.470e-01   1.388
+educaGroupHigher education                         5.010e-05  2.326e-01   2.786
+familyStatusIn Couple (Spouse employed full-time)  3.549e-05  1.079e-01   5.633
+familyStatusIn Couple (Spouse employed part-time)  4.376e-05  1.472e-01   3.612
+familyStatusIn Couple (Spouse employment N/A)      8.183e-05  3.189e-01  -1.852
+familyStatusSingle Parent                          4.262e-05  1.487e-01   5.181
+                                                  Pr(>|z|)    
+male1                                              < 2e-16 ***
+age                                               0.655915    
+midWeek1                                          0.193673    
+hhldSize                                          0.001589 ** 
+nChild                                            2.83e-06 ***
+ageChild                                          6.83e-08 ***
+urban1                                            0.391680    
+incomelowest 25%                                  0.008655 ** 
+incomemiddle 50%                                  0.049693 *  
+educaGroupCompleted secondary education           0.165204    
+educaGroupHigher education                        0.005340 ** 
+familyStatusIn Couple (Spouse employed full-time) 1.77e-08 ***
+familyStatusIn Couple (Spouse employed part-time) 0.000304 ***
+familyStatusIn Couple (Spouse employment N/A)     0.064031 .  
+familyStatusSingle Parent                         2.21e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                                  exp(coef) exp(-coef)
+male1                                                0.3880     2.5771
+age                                                  1.0024     0.9976
+midWeek1                                             1.1361     0.8802
+hhldSize                                             0.7726     1.2943
+nChild                                               1.5151     0.6600
+ageChild                                             0.9523     1.0501
+urban1                                               1.0826     0.9237
+incomelowest 25%                                     0.6854     1.4590
+incomemiddle 50%                                     0.8396     1.1910
+educaGroupCompleted secondary education              1.4088     0.7098
+educaGroupHigher education                           1.9117     0.5231
+familyStatusIn Couple (Spouse employed full-time)    1.8367     0.5445
+familyStatusIn Couple (Spouse employed part-time)    1.7016     0.5877
+familyStatusIn Couple (Spouse employment N/A)        0.5540     1.8049
+familyStatusSingle Parent                            2.1603     0.4629
+                                                  lower .95 upper .95
+male1                                                0.3338    0.4511
+age                                                  0.9918    1.0131
+midWeek1                                             0.9372    1.3773
+hhldSize                                             0.6583    0.9068
+nChild                                               1.2733    1.8028
+ageChild                                             0.9355    0.9693
+urban1                                               0.9028    1.2982
+incomelowest 25%                                     0.5170    0.9087
+incomemiddle 50%                                     0.7051    0.9998
+educaGroupCompleted secondary education              0.8682    2.2861
+educaGroupHigher education                           1.2118    3.0160
+familyStatusIn Couple (Spouse employed full-time)    1.4865    2.2694
+familyStatusIn Couple (Spouse employed part-time)    1.2752    2.2705
+familyStatusIn Couple (Spouse employment N/A)        0.2966    1.0350
+familyStatusSingle Parent                            1.6142    2.8912
+
+Concordance= 0.717  (se = 0.009 )
+Likelihood ratio test= 6.134e+09  on 15 df,   p=<2e-16
+Wald test            = 520.2  on 15 df,   p=<2e-16
+Score (logrank) test = 5.8e+09  on 15 df,   p=<2e-16,   Robust = 82.7  p=2e-11
+
+  (Note: the likelihood ratio and score tests assume independence of
+     observations within a cluster, the Wald and robust score tests do not).
+PH test: United States 
+                chisq df      p
+male         1.01e+07  1 <2e-16
+age          6.74e+07  1 <2e-16
+midWeek      1.76e+08  1 <2e-16
+hhldSize     2.72e+07  1 <2e-16
+nChild       1.17e+05  1 <2e-16
+ageChild     7.03e+06  1 <2e-16
+urban        7.58e+05  1 <2e-16
+income       4.05e+07  2 <2e-16
+educaGroup   2.45e+07  2 <2e-16
+familyStatus 5.60e+07  4 <2e-16
+GLOBAL       4.45e+08 15 <2e-16
+
+--- Gender HR by country (sorted) ---
+              country        HR     lower     upper events     n
+male15  United States 0.3880347 0.3337613 0.4511334   1306 31315
+male12         France 0.3898753 0.2670434 0.5692062    154  3070
+male13          Spain 0.4655766 0.2562665 0.8458442     72  2250
+male1         Belgium 0.5181849 0.2988657 0.8984490     81  1324
+male14 United Kingdom 0.6416353 0.4491394 0.9166328    137  1439
+male11        Finland 0.6565164 0.3470212 1.2420390     47   685
+
+
+--- FOREST PLOT: hazard ratio del género por país ---
+  [fig] fig_forest_plot.pdf 
+
+
+--- RSF POR PAÍS (500 árboles, con pesos) ---
+
+RSF: Belgium 
+C-index RSF [ Belgium ]: 0.7923 
+
+             Importance   Relative Imp
+ageChild         0.4537         1.0000
+hhldSize         0.1024         0.2257
+nChild           0.0547         0.1206
+male             0.0533         0.1175
+age              0.0337         0.0743
+educaGroup       0.0000         0.0000
+cohab            0.0000         0.0000
+urban            0.0000         0.0000
+midWeek         -0.0039        -0.0085
+income          -0.0261        -0.0576
+  [fig] fig_rsf_belgium_vimp.pdf 
+
+RSF: Canada 
+C-index RSF [ Canada ]: 0.6412 
+
+             Importance   Relative Imp
+hhldSize         0.0846         1.0000
+educaGroup       0.0755         0.8922
+midWeek          0.0624         0.7372
+cohab            0.0514         0.6075
+age              0.0382         0.4516
+male             0.0381         0.4499
+nChild           0.0303         0.3576
+income           0.0288         0.3404
+ageChild         0.0151         0.1782
+urban           -0.0057        -0.0672
+  [fig] fig_rsf_canada_vimp.pdf 
+  RSF skipped [ Finland ]: only 47 events
+
+RSF: France 
+C-index RSF [ France ]: 0.7049 
+
+             Importance   Relative Imp
+ageChild         0.2301         1.0000
+male             0.1439         0.6252
+age              0.0730         0.3174
+midWeek          0.0526         0.2286
+hhldSize         0.0393         0.1707
+cohab            0.0255         0.1107
+educaGroup       0.0141         0.0611
+income           0.0032         0.0137
+urban            0.0000         0.0000
+nChild          -0.0201        -0.0874
+  [fig] fig_rsf_france_vimp.pdf 
+
+RSF: Spain 
+C-index RSF [ Spain ]: 0.5875 
+
+             Importance   Relative Imp
+ageChild         0.1753         1.0000
+male             0.0901         0.5137
+income           0.0538         0.3071
+educaGroup       0.0427         0.2437
+age              0.0400         0.2282
+cohab            0.0129         0.0735
+urban            0.0106         0.0603
+midWeek         -0.0001        -0.0007
+hhldSize        -0.0066        -0.0376
+nChild          -0.0244        -0.1390
+  [fig] fig_rsf_spain_vimp.pdf 
+
+RSF: United Kingdom 
+C-index RSF [ United Kingdom ]: 0.6811 
+
+             Importance   Relative Imp
+ageChild         0.2030         1.0000
+educaGroup       0.0729         0.3591
+income           0.0552         0.2721
+nChild           0.0268         0.1323
+age              0.0228         0.1125
+hhldSize         0.0166         0.0818
+cohab            0.0139         0.0684
+midWeek          0.0049         0.0242
+male             0.0012         0.0058
+urban            0.0000         0.0000
+  [fig] fig_rsf_united_kingdom_vimp.pdf 
+
+RSF: United States 
+C-index RSF [ United States ]: 0.5946 
+
+             Importance   Relative Imp
+ageChild         0.0754         1.0000
+male             0.0586         0.7773
+midWeek          0.0373         0.4952
+educaGroup       0.0228         0.3025
+income           0.0189         0.2504
+cohab            0.0108         0.1430
+hhldSize         0.0037         0.0489
+urban           -0.0015        -0.0202
+age             -0.0021        -0.0275
+nChild          -0.0108        -0.1429
+  [fig] fig_rsf_united_states_vimp.pdf 
+
+
+=== ANÁLISIS COMPLETO V2 FINALIZADO ===
+Figuras:  C:/data/Childcare_ML//output/figures 
+Log:      C:/data/Childcare_ML//output/output_log_v2.txt 
