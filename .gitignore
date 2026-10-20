@@ -1,0 +1,3 @@
+# Data are not distributed (MTUS microdata and derived files)
+data/*
+!data/README.md
